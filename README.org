@@ -1,0 +1,8 @@
+* Calc
+
+A simple arithmetic calculator/interpreter written in [[http://idris-lang.org][Idris]]. It's
+more-or-less a port of the calc implementation from the
+[[http://andrej.com/plzoo/][plzoo]]. However, since there's no LR/LALR parser generator for Idris
+that I know of, it uses the Lightyear parser combinator package for
+both lexing and parsing (rather than the lex/yacc/menhir approach of
+plzoo/calc).

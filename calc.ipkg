@@ -1,0 +1,8 @@
+package calc
+
+modules = Lexer, Parser, Syntax, Eval, Main
+pkgs = lightyear
+
+sourcedir = src
+executable = calc
+main = Main
