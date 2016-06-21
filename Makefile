@@ -1,5 +1,5 @@
 PROG := calc
-PKG := calc.ipkg
+PKG := $(PROG).ipkg
 
 .PHONY: all
 all: build
