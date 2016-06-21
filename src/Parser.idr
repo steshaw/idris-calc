@@ -23,7 +23,7 @@ chainl1 p op = p >>= rest
                       rest (f a1 a2)) <|> pure a1
 
 chainl : Parser a -> Parser (a -> a -> a) -> a -> Parser a
-chainl p op a = (p `chainl1` op) <|> pure a
+chainl p op a = (p `Parser.chainl1` op) <|> pure a
 
 infixOp : L.Lexeme -> (E -> E -> E) -> Parser (E -> E -> E)
 infixOp l ctor = do
@@ -51,10 +51,10 @@ rparen = satisfy (== L.RParen)
 
 mutual
   expression : Parser Expression
-  expression = term `chainl1` addOp
+  expression = term `Parser.chainl1` addOp
 
   term : Parser Expression
-  term = factor `chainl1` mulOp
+  term = factor `Parser.chainl1` mulOp
 
   numeral : Parser Expression
   numeral = do
@@ -78,9 +78,6 @@ mutual
   factor = numeral 
        <|> subExp
        <|> negate 
-
---       <|> Negate <$> (minus *> expression)
---       <|> (lparen *> expression <* rparen)
 
 export
 toplevel : Parser Expression
